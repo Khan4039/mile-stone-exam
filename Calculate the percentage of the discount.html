@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Calculate Discount Percentage</title>
+    <style>
+        body {
+            background-color: #efefef;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        form {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin: auto;
+            max-width: 500px;
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
+        }
+        
+        label {
+            display: block;
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        input {
+            padding: 5px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #0062cc;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Calculate Discount Percentage</h1>
+
+    <form id="discount-form">
+        <label for="original-price">Original Price:</label>
+        <input type="number" id="original-price" name="original-price" required><br>
+
+        <label for="discounted-price">Discounted Price:</label>
+        <input type="number" id="discounted-price" name="discounted-price" required><br>
+
+        <button type="submit">Calculate Discount Percentage</button>
+    </form>
+
+    <div id="result"></div>
+
+    <script>
+        const discountPercentage = (originalPrice, discountedPrice) => {
+            const percentage = ((originalPrice - discountedPrice) / originalPrice) * 100;
+        
+            return Math.round(percentage * 100) / 100;
+        };
+        
+        const form = document.getElementById("discount-form");
+        const resultDiv = document.getElementById("result");
+        
+        form.addEventListener("submit", (event) => {
+            event.preventDefault();
+        
+            const originalPrice = parseFloat(form.elements["original-price"].value);
+            const discountedPrice = parseFloat(form.elements["discounted-price"].value);
+        
+            if (!isNaN(originalPrice) && !isNaN(discountedPrice)) {
+                const percentage = discountPercentage(originalPrice, discountedPrice);
+        
+                resultDiv.innerHTML = `<p>You have saved ${100 - percentage}% on the original price!</p>`;
+            } else {
+                resultDiv.innerHTML = "<p>Please enter valid prices.</p>";
+            }
+        });
+        
+    </script>
+</body>
+</html>

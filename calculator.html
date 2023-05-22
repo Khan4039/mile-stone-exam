@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <style>
+      body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+h1 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin: 20px;
+}
+
+input[type="number"], input[type="text"] {
+  margin-bottom: 10px;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
+  box-shadow:0  0 15px #888888;
+}
+
+button {
+  padding: 5px 10px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+    </style>
+  </head>
+  <body>
+    <h1>Calculator</h1>
+    <p>
+      Enter two numbers and an operator below:
+    </p>
+    <form>
+      <div>
+        <input type="number" id="no1" placeholder="Enter first number">
+      <input type="text" id="operator" placeholder="Enter operator (+, -, *, /)">
+      <input type="number" id="no2" placeholder="Enter second number">
+      </div>
+      <button type="button" onclick="calculate()">Calculate</button>
+    </form>
+    <p id="result"></p>
+    <script>
+      function calculate() {
+  let num1 = document.getElementById("no1").value;
+  let num2 = document.getElementById("no2").value;
+  let operator = document.getElementById("operator").value;
+  let result;
+
+  switch (operator) {
+    case "+":
+      result = parseInt(num1) + parseInt(num2);
+      break;
+    case "-":
+      result = num1 - num2;
+      break;
+    case "*":
+      result = num1 * num2;
+      break;
+    case "/":
+      result = num1 / num2;
+      break;
+    default:
+      alert("Invalid operator");
+      return;
+  }
+
+  document.getElementById("result").innerHTML = `Result: ${result}`;
+}
+
+    </script>
+  </body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Name Form</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form>
+    <label for="name">Enter your name:</label>
+    <input type="text" id="name" name="name">
+    <button type="button" onclick="capitalizeName()">Submit</button>
+  </form>
+  
+  <script>
+    function capitalizeName() {
+  // Get input element
+  let nameInput = document.getElementById("name");
+
+  // Check if first letter is lowercase using ternary operator
+  let modifiedName = nameInput.value.charAt(0).toUpperCase() + nameInput.value.slice(1);
+
+  // Set input value to modified name
+  nameInput.value = modifiedName;
+}
+  </script>
+</body>
+</html>

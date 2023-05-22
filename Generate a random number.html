@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Number Generator</title>
+    <style>
+        body {
+            background-color: #efefef;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            text-align: center;
+            margin-top: 50px;
+        }
+        
+        p {
+            font-size: 24px;
+            margin-top: 50px;
+            text-align: center;
+        }
+        
+        #number {
+            font-size: 64px;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        button {
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block;
+            margin: auto;
+        }
+        
+        button:hover {
+            background-color: #0062cc;
+        }
+        
+    </style>
+</head>
+<body>
+    <h1>Random Number Generator</h1>
+
+    <p>The random number is:</p>
+    <div id="number"></div>
+
+    <button id="generate-btn">Generate New Number</button>
+
+    <script>
+        const generateRandomNumber = () => {
+            return Math.floor(Math.random() * 100) + 1;
+        };
+        
+        (() => {
+            const numberDiv = document.getElementById("number");
+            numberDiv.textContent = generateRandomNumber();
+        
+            const generateBtn = document.getElementById("generate-btn");
+            generateBtn.addEventListener("click", () => {
+                numberDiv.textContent = generateRandomNumber();
+            });
+        })();
+         
+    </script>
+</body>
+</html>

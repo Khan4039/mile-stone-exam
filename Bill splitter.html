@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Restaurant Bill Calculator</title>
+    <style>
+        h1 {
+  text-align: center;
+}
+
+form {
+  margin: 0 auto;
+  width: 50%;
+}
+
+label {
+  display: inline-block;
+  width: 200px;
+}
+
+input[type="number"] {
+  width: 75px;
+}
+
+button {
+  margin-left: 200px;
+}
+
+#result {
+  text-align: center;
+  font-weight: bold;
+}
+
+    </style>
+  </head>
+  <body>
+    <h1>Restaurant Bill Calculator</h1>
+    <form>
+      <label for="cost">Cost per Dish:</label>
+      <input type="number" id="cost" name="cost"><br>
+
+      <label for="people">Number of People Sharing:</label>
+      <input type="number" id="people" name="people"><br>
+
+      <button type="button" onclick="calculateBill()">Calculate Bill</button>
+
+      <div id="result"></div>
+    </form>
+
+    <script>
+        function calculateBill() {
+  const costInput = document.getElementById("cost");
+  const peopleInput = document.getElementById("people");
+  const resultDiv = document.getElementById("result");
+
+  const cost = Number(costInput.value);
+  const people = Number(peopleInput.value);
+
+  const totalBill = cost * people;
+  const billPerPerson = totalBill / people;
+
+  const resultObject = {
+    totalBill: `Total Bill: Rs. ${totalBill}/-`,
+    billPerPerson: `Bill per person: Rs. ${billPerPerson}/-`
+  };
+
+  resultDiv.textContent = JSON.stringify(resultObject);
+}
+
+    </script>
+  </body>
+</html>

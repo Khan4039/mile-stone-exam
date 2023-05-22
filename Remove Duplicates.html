@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove Duplicate Items from Cart</title>
+    <style>
+        /* Optional CSS to style the HTML elements */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+textarea {
+  margin-bottom: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4caf50;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+#distinct-cart {
+  margin-top: 20px;
+  padding-left: 0;
+  list-style: none;
+}
+
+    </style>
+</head>
+<body>
+    <script>
+        function removeDuplicates() {
+  // Get the cart textarea and its value
+  let cartTextArea = document.getElementById("cart");
+  let items = cartTextArea.value.trim().split("\n");
+
+  // Remove duplicates using Set object
+  let distinctItems = [...new Set(items)];
+
+  // Clear the textarea
+  cartTextArea.value = "";
+
+  // Display the distinct items in list
+  let distinctCartList = document.getElementById("distinct-cart");
+  distinctCartList.innerHTML = "";
+  distinctItems.forEach(function(item) {
+    let listItem = document.createElement("li");
+    listItem.innerText = item;
+    distinctCartList.appendChild(listItem);
+  });
+}
+
+    </script>
+  </head>
+  <body>
+    <h1>Remove Duplicate Items from Cart</h1>
+
+    <label for="cart">Enter items in your cart:</label><br />
+    <textarea id="cart" rows="10" cols="50"></textarea><br />
+
+    <button onclick="removeDuplicates()">Remove Duplicates</button>
+
+    <h2>Cart without Duplicates:</h2>
+    <ul id="distinct-cart"></ul>
+  </body>
+</html>
